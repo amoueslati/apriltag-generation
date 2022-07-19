@@ -9,43 +9,42 @@ on:
   pull_request:
     branches: [ "master" ]
 
-#jobs:
-  #build:
-  
 jobs:
-  run_tests:
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run script file
-      run: |
-         ant
-         NAMES=(agStandard41h12)
-         for name in ${NAMES[*]}; do
-            java -cp april.jar april.tag.TagToC april.tag.T$name
-            cat scripts/copyright.txt > ../apriltag/t$name.c
-            cat t$name.c >> ../apriltag/t$name.c
-            rm t$name.c
-
-            cat scripts/copyright.txt > ../apriltag/t$name.h
-            cat t$name.h >> ../apriltag/t$name.h
-            rm t$name.h
-         done
-      shell: bash
-
-    #runs-on: ubuntu-latest
-
+  build:
+  
+#jobs:
+  #run_tests:
+    #runs-on: ubuntu-20.04
     #steps:
-    #- uses: actions/checkout@v3
-    #- name: Set up JDK 11
-    #  uses: actions/setup-java@v3
-    #  with:
-    #    java-version: '11'
-    #    distribution: 'temurin'
-    #- name: Build with Ant
-    #  run: |
-    #    ant
-    #    java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7.java
+    #- uses: actions/checkout@v2
+    #- name: Run script file
+      #run: |
+      #   ant
+      #   NAMES=(agStandard41h12)
+      #   for name in ${NAMES[*]}; do
+      #      java -cp april.jar april.tag.TagToC april.tag.T$name
+      #      cat scripts/copyright.txt > ../apriltag/t$name.c
+      #      cat t$name.c >> ../apriltag/t$name.c
+      #      rm t$name.c
+
+      #      cat scripts/copyright.txt > ../apriltag/t$name.h
+      #      cat t$name.h >> ../apriltag/t$name.h
+      #      rm t$name.h
+      #   done
+      #shell: bash
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+    - name: Build with Ant
+      run: |
+        ant
+        java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7
 
 #java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7
 
