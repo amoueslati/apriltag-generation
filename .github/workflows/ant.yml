@@ -22,4 +22,6 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Build with Ant
-      run: ant java -cp april.jar april.tag.TagFamilyGenerator standard_9 7
+      run: |
+        ant
+        java -cp april.jar april.tag.TagFamilyGenerator standard_9 7
