@@ -46,10 +46,8 @@ jobs:
         ant
         java -cp april.jar april.tag.TagToC april.tag.TagStandard41h7
         java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7 amoueslati/apriltag-generation@master/TagStandard41h7
-    - uses: actions/upload-artifact@v3
-      with:
-        name: apriltag-generation
-        path: amoueslati/apriltag-generation/build
+    - name: Download all workflow run artifacts
+      uses: actions/download-artifact@v3
 #java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7
 
 #java -cp april.jar april.tag.TagFamilyGenerator standard_9 7
