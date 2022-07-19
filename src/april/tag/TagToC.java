@@ -98,7 +98,12 @@ public class TagToC
 
         String hname = String.format("tag%s%dh%d.h", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
         outs = new BufferedWriter(new FileWriter(hname));
+        String str = String.format("#ifndef _TAG%s%dH%d\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance)
+        str += String.format("#define _TAG%s%dH%d\n\n",tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance)
+        str += String.format("#define _TAG%s%dH%d\n\n",tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance)
+        system.out.println(str)
         outs.write(String.format("#ifndef _TAG%s%dH%d\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance));
+          
         outs.write(String.format("#define _TAG%s%dH%d\n\n",tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance));
         outs.write(String.format("#include \"apriltag.h\"\n\n"));
 
@@ -109,6 +114,7 @@ public class TagToC
         outs.write(String.format("#ifdef __cplusplus\n}\n#endif\n\n"));
         outs.write(String.format("#endif\n"));
         outs.flush();
+        
         outs.close();
     }
        catch(Exception e){
