@@ -20,7 +20,7 @@ jobs:
     - name: Run script file
       run: |
          ant
-         NAMES=(ag16h5 ag25h9 ag36h11 agCircle21h7 agCircle49h12 agCustom48h12 agStandard41h7 agStandard41h12 agStandard52h13)
+         NAMES=(agStandard41h12)
          for name in ${NAMES[*]}; do
             java -cp april.jar april.tag.TagToC april.tag.T$name
             cat scripts/copyright.txt > ../apriltag/t$name.c
