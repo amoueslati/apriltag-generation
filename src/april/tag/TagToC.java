@@ -72,8 +72,8 @@ public class TagToC
         str2 += String.format("%stf->ncodes = %d;\n", indent, num_codes);
         str2 += String.format("%stf->codes = codedata;\n", indent);
         str2 += String.format("%stf->nbits = %d;\n", indent, tf.getLayout().getNumBits());
-        str2 += String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
-        str2 += String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
+        str2 += String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
+        str2 += String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
         str2 += String.format("};\n");
          
         outs.write(String.format("apriltag_family_t *tag%s%dh%d_create()\n", tf.getLayout().getName(),tf.getLayout().getNumBits(), tf.minimumHammingDistance));
@@ -84,8 +84,8 @@ public class TagToC
         outs.write(String.format("%stf->ncodes = %d;\n", indent, num_codes));
         outs.write(String.format("%stf->codes = codedata;\n", indent));
         outs.write(String.format("%stf->nbits = %d;\n", indent, tf.getLayout().getNumBits()));
-        outs.write(String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
-        outs.write(String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
+        outs.write(String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
+        outs.write(String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
         int[][] locations = tf.getLayout().getBitLocations();
         for (int i = 0; i < locations.length; i++) {
             outs.write(String.format("%stf->bit_x[%d] = %d;\n", indent, i, locations[i][0]));
