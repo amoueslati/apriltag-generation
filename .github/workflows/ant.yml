@@ -25,6 +25,12 @@ jobs:
       run: |
         ant
         java -cp april.jar april.tag.TagToC april.tag.TagStandard41h7
-        java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7
+        cat scripts/copyright.txt > ../apriltags/TagStandard41h7.c
+        cat TagStandard41h7.c >> ../apriltags/TagStandard41h7.c
+
+        cat scripts/copyright.txt > ../apriltags/TagStandard41h7.h
+        cat TagStandard41h7.h >> ../apriltags/TagStandard41h7.h
+
+#java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7
 
 #java -cp april.jar april.tag.TagFamilyGenerator standard_9 7
