@@ -3,7 +3,7 @@ set -e
 
 ant
 # Names (without first character, t/T).
-NAMES=(ag16h5 ag25h9 ag36h11 agCircle21h7 agCircle49h12 agCustom48h12 agStandard41h12 agStandard52h13)
+NAMES=(ag16h5 ag25h9 ag36h11 agCircle21h7 agCircle49h12 agCustom48h12 agStandard41h7 agStandard41h12 agStandard52h13)
 for name in ${NAMES[*]}; do
     java -cp april.jar april.tag.TagToC april.tag.T$name
 
