@@ -40,6 +40,9 @@ public class TagToC
             System.out.println("Could not find class.");
             return;
         }
+       else{
+          System.out.println("Class found.");
+       }
 
         String indent = "   ";
 
