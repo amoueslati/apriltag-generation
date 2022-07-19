@@ -83,9 +83,9 @@ public class TagToC
         outs.write(String.format("%stf->h = %d;\n", indent, tf.minimumHammingDistance));
         outs.write(String.format("%stf->ncodes = %d;\n", indent, num_codes));
         outs.write(String.format("%stf->codes = codedata;\n", indent));
-        outs.write(String.format("%stf->nbits = %d;\n", indent, tf.getLayout().getNumBits()));
-        outs.write(String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
-        outs.write(String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
+        outs.write(String.format("%stf->nbits = %d;\n", indent, tf.getLayout().getNumBits());
+        outs.write(String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
+        outs.write(String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
         int[][] locations = tf.getLayout().getBitLocations();
         for (int i = 0; i < locations.length; i++) {
             outs.write(String.format("%stf->bit_x[%d] = %d;\n", indent, i, locations[i][0]));
