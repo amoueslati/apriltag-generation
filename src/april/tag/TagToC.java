@@ -109,7 +109,6 @@ public class TagToC
          str2 += String.format("%sfree(tf->name);\n", indent);
          str2 += String.format("%sfree(tf);\n", indent);
          str2 += String.format("}\n");
-         System.out.println(str2); 
         outs.write(String.format("%stf->width_at_border = %d;\n", indent, tf.getLayout().getBorderWidth()));
         outs.write(String.format("%stf->total_width = %d;\n", indent, tf.getLayout().getSize()));
         outs.write(String.format("%stf->reversed_border = %s;\n", indent, tf.getLayout().isReversedBorder()));
