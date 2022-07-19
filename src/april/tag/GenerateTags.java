@@ -41,7 +41,7 @@ public class GenerateTags {
 
         String cls = args[0];
         String dirpath = args[1] + "/";
-
+        System.out.printf(dirpath);
         TagFamily tagFamily = (TagFamily) april.util.ReflectUtil.createObject(cls);
         if (tagFamily == null) {
             System.err.println("Tag family not found.");
