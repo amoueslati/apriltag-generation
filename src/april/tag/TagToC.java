@@ -31,6 +31,7 @@ import java.io.*;
 
 public class TagToC
 {
+   try{
     public static void main(String args[]) throws IOException
     {
         String cls = args[0];
@@ -108,5 +109,9 @@ public class TagToC
         outs.write(String.format("#endif\n"));
         outs.flush();
         outs.close();
+    }
+   }
+   catch(Exception e){
+        System.out.println("Could not create file");
     }
 }
