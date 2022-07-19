@@ -44,6 +44,7 @@ jobs:
     - name: Build with Ant
       run: |
         ant
+        java -cp april.jar april.tag.TagToC april.tag.TagStandard41h7
         java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7
 
 #java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7
