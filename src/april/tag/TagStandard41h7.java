@@ -99,12 +99,9 @@ public class TagStandard41h7 extends TagFamily
 		System.arraycopy(ConstructCodes6.constructCodes(), 0, codes, 49152, 3495);
 		return codes;
 	}
-	public class TagStandard41h7 extends TagFamily
+	public TagStandard41h7()
 	{
-		public TagStandard41h7()
-		{
-			super(ImageLayout.Factory.createFromString("Standard", "ddddddddddbbbbbbbddbwwwwwbddbwdddwbddbwdddwbddbwdddwbddbwwwwwbddbbbbbbbdddddddddd"), 7, constructCodes());
-		}
+		super(ImageLayout.Factory.createFromString("Standard", "ddddddddddbbbbbbbddbwwwwwbddbwdddwbddbwdddwbddbwdddwbddbwwwwwbddbbbbbbbdddddddddd"), 7, constructCodes());
 	}
 	
 }
