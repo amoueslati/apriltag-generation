@@ -19,8 +19,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run script file
       run: |
-         chmod +x ./scripts/regenerate_apriltag_files.sh
-         ./scripts/regenerate_apriltag_files.sh
+         chmod +x /home/runner/work/apriltag-generation/apriltag-generation/scripts/regenerate_apriltag_files.sh
+         /home/runner/work/apriltag-generation/apriltag-generation/scripts/regenerate_apriltag_files.sh
       shell: bash
 
     #runs-on: ubuntu-latest
