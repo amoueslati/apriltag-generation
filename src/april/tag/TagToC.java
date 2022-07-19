@@ -54,10 +54,12 @@ public class TagToC
         BufferedWriter outs = new BufferedWriter(new FileWriter(cname));
         String str2 = String.format("#include <stdlib.h>\n");
         str2 += String.format("#include \"tag%s%dh%d.h\"\n\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
+       
         outs.write(String.format("#include <stdlib.h>\n"));
         outs.write(String.format("#include \"tag%s%dh%d.h\"\n\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance));
 
         int num_codes = Math.min(tf.getCodes().length, 65535);
+        str2 += String.format("static uint64_t codedata[%d] = {\n", num_codes);
         outs.write(String.format("static uint64_t codedata[%d] = {\n", num_codes));
         for (int i = 0; i < num_codes; i++) {
             outs.write(String.format("%s0x%016xUL,\n", indent, tf.getCodes()[i]));
