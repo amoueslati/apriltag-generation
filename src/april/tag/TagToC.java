@@ -72,8 +72,8 @@ public class TagToC
         str2 += String.format("%stf->ncodes = %d;\n", indent, num_codes);
         str2 += String.format("%stf->codes = codedata;\n", indent);
         str2 += String.format("%stf->nbits = %d;\n", indent, tf.getLayout().getNumBits());
-        str2 += String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
-        str2 += String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
+        str2 += String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
+        str2 += String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
         str2 += String.format("};\n");
          
         outs.write(String.format("apriltag_family_t *tag%s%dh%d_create()\n", tf.getLayout().getName(),tf.getLayout().getNumBits(), tf.minimumHammingDistance));
