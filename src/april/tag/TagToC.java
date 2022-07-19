@@ -52,7 +52,8 @@ public class TagToC
         String text_name = String.format("tag%s%dh%d", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
 
         BufferedWriter outs = new BufferedWriter(new FileWriter(cname));
-
+        String str2 = String.format("#include <stdlib.h>\n");
+        str2 += String.format("#include \"tag%s%dh%d.h\"\n\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
         outs.write(String.format("#include <stdlib.h>\n"));
         outs.write(String.format("#include \"tag%s%dh%d.h\"\n\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance));
 
@@ -60,9 +61,21 @@ public class TagToC
         outs.write(String.format("static uint64_t codedata[%d] = {\n", num_codes));
         for (int i = 0; i < num_codes; i++) {
             outs.write(String.format("%s0x%016xUL,\n", indent, tf.getCodes()[i]));
+           str2 += String.format("%s0x%016xUL,\n", indent, tf.getCodes()[i]);
         }
-        outs.write(String.format("};\n"));
-
+        str2 += String.format("};\n");
+        str2 += String.format("apriltag_family_t *tag%s%dh%d_create()\n", tf.getLayout().getName(),tf.getLayout().getNumBits(), tf.minimumHammingDistance);
+        str2 += String.format("{\n");
+        str2 += String.format("%sapriltag_family_t *tf = calloc(1, sizeof(apriltag_family_t));\n", indent);
+        str2 += String.format("%stf->name = strdup(\"%s\");\n", indent, text_name);
+        str2 += String.format("%stf->h = %d;\n", indent, tf.minimumHammingDistance);
+        str2 += String.format("%stf->ncodes = %d;\n", indent, num_codes);
+        str2 += String.format("%stf->codes = codedata;\n", indent);
+        str2 += String.format("%stf->nbits = %d;\n", indent, tf.getLayout().getNumBits());
+        str2 += String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
+        str2 += String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
+        str2 += String.format("};\n");
+         
         outs.write(String.format("apriltag_family_t *tag%s%dh%d_create()\n", tf.getLayout().getName(),tf.getLayout().getNumBits(), tf.minimumHammingDistance));
         outs.write(String.format("{\n"));
         outs.write(String.format("%sapriltag_family_t *tf = calloc(1, sizeof(apriltag_family_t));\n", indent));
@@ -77,7 +90,24 @@ public class TagToC
         for (int i = 0; i < locations.length; i++) {
             outs.write(String.format("%stf->bit_x[%d] = %d;\n", indent, i, locations[i][0]));
             outs.write(String.format("%stf->bit_y[%d] = %d;\n", indent, i, locations[i][1]));
+           
+           str2 += String.format("%stf->bit_x[%d] = %d;\n", indent, i, locations[i][0]);
+           str2 += String.format("%stf->bit_y[%d] = %d;\n", indent, i, locations[i][1]);
         }
+         str2 += String.format("%stf->width_at_border = %d;\n", indent, tf.getLayout().getBorderWidth());
+         str2 += String.format("%stf->total_width = %d;\n", indent, tf.getLayout().getSize()));
+         str2 += String.format("%stf->reversed_border = %s;\n", indent, tf.getLayout().isReversedBorder());
+        str2 += String.format("%sreturn tf;\n", indent);
+         str2 += String.format("}\n");
+         str2 += String.format("\n");
+         str2 += String.format("void tag%s%dh%d_destroy(apriltag_family_t *tf)\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
+         str2 += String.format("{\n");
+         str2 += String.format("%sfree(tf->bit_x);\n", indent);
+         str2 += String.format("%sfree(tf->bit_y);\n", indent);
+         str2 += String.format("%sfree(tf->name);\n", indent);
+         str2 += String.format("%sfree(tf);\n", indent);
+         str2 += String.format("}\n");
+          
         outs.write(String.format("%stf->width_at_border = %d;\n", indent, tf.getLayout().getBorderWidth()));
         outs.write(String.format("%stf->total_width = %d;\n", indent, tf.getLayout().getSize()));
         outs.write(String.format("%stf->reversed_border = %s;\n", indent, tf.getLayout().isReversedBorder()));
