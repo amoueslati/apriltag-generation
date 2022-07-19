@@ -45,7 +45,7 @@ jobs:
       run: |
         ant
         java -cp april.jar april.tag.TagToC april.tag.TagStandard41h7
-        java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7 ../tmp/TagStandard41h7
+        java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7 amoueslati/apriltag-generation/src/april/tag/tmp/TagStandard41h7
 
 #java -cp april.jar april.tag.GenerateTags april.tag.TagStandard41h7
 
