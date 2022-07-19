@@ -111,8 +111,9 @@ public class TagToC
         outs.flush();
         outs.close();
     }
-   }
-   catch(Exception e){
+       catch(Exception e){
         System.out.println("Could not create file");
     }
+   }
+   
 }
