@@ -24,5 +24,5 @@ jobs:
     - name: Build with Ant
       run: |
         ant
-        java -cp april.jar april.tag.TagToC april.tag.TagCircle21h7
-        java -cp april.jar april.tag.GenerateTags april.tag.TagCircle21h7
+        java -cp april.jar april.tag.TagToC april.tag.testTag
+        java -cp april.jar april.tag.GenerateTags april.tag.TestTag
