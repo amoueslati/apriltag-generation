@@ -73,7 +73,7 @@ public class TagRenderer {
                 g.drawImage(ims.get(id), x * imageSize, y * imageSize, null);
             }
         }
-        System.out.printf(codes.length);
+        System.out.printf(String valueOf(codes.length));
         return im;
     }
 
