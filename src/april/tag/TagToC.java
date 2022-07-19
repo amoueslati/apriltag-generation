@@ -31,9 +31,10 @@ import java.io.*;
 
 public class TagToC
 {
-   try{
+   
     public static void main(String args[]) throws IOException
     {
+       try{
         String cls = args[0];
 
         TagFamily tf = (TagFamily) april.util.ReflectUtil.createObject(cls);
