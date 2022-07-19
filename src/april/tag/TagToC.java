@@ -101,6 +101,11 @@ public class TagToC
         String str = String.format("#ifndef _TAG%s%dH%d\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
         str += String.format("#define _TAG%s%dH%d\n\n",tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
         str += String.format("#define _TAG%s%dH%d\n\n",tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
+        str += String.format("#ifdef __cplusplus\nextern \"C\" {\n#endif\n\n");
+        str += String.format("apriltag_family_t *tag%s%dh%d_create();\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
+        str += String.format("void tag%s%dh%d_destroy(apriltag_family_t *tf);\n\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance);
+        str += String.format("#ifdef __cplusplus\n}\n#endif\n\n");
+        str += String.format("#endif\n");
         System.out.println(str);
         outs.write(String.format("#ifndef _TAG%s%dH%d\n", tf.getLayout().getName(), tf.getLayout().getNumBits(), tf.minimumHammingDistance));
           
