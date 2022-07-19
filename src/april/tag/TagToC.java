@@ -84,8 +84,8 @@ public class TagToC
         outs.write(String.format("%stf->ncodes = %d;\n", indent, num_codes));
         outs.write(String.format("%stf->codes = codedata;\n", indent));
         outs.write(String.format("%stf->nbits = %d;\n", indent, tf.getLayout().getNumBits());
-        outs.write(String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
-        outs.write(String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits());
+        outs.write(String.format("%stf->bit_x = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
+        outs.write(String.format("%stf->bit_y = calloc(%d, sizeof(uint32_t));\n", indent, tf.getLayout().getNumBits()));
         int[][] locations = tf.getLayout().getBitLocations();
         for (int i = 0; i < locations.length; i++) {
             outs.write(String.format("%stf->bit_x[%d] = %d;\n", indent, i, locations[i][0]));
@@ -95,7 +95,7 @@ public class TagToC
            str2 += String.format("%stf->bit_y[%d] = %d;\n", indent, i, locations[i][1]);
         }
          str2 += String.format("%stf->width_at_border = %d;\n", indent, tf.getLayout().getBorderWidth());
-         str2 += String.format("%stf->total_width = %d;\n", indent, tf.getLayout().getSize()));
+         str2 += String.format("%stf->total_width = %d;\n", indent, tf.getLayout().getSize());
          str2 += String.format("%stf->reversed_border = %s;\n", indent, tf.getLayout().isReversedBorder());
         str2 += String.format("%sreturn tf;\n", indent);
          str2 += String.format("}\n");
