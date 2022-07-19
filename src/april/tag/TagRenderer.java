@@ -178,7 +178,7 @@ public class TagRenderer {
                     prefix,
                     i);
             try {
-                ImageIO.write(im, "png", new File(dirpath + fname));
+                ImageIO.write(im, "png", new File(fname));
                System.out.printf(im.toString());
             } catch (IOException ex) {
                 System.out.println("ex: "+ex);
