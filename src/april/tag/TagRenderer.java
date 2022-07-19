@@ -84,9 +84,9 @@ public class TagRenderer {
 
         ImageIO.write(im, "png", new File(filepath));
        }
-       catch{
-          System.out.printf("could not write to filepath");
-       }
+       catch (IOException ex) {
+                System.out.println("ex: "+ex);
+            }
     }
 
     public void writeAllImagesPostScript(String filepath) throws IOException
