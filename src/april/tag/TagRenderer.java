@@ -79,9 +79,14 @@ public class TagRenderer {
 
     public void writeAllImagesMosaic(String filepath) throws IOException
     {
+       try{
         BufferedImage im = getAllImagesMosaic();
 
         ImageIO.write(im, "png", new File(filepath));
+       }
+       catch{
+          System.out.printf("could not write to filepath");
+       }
     }
 
     public void writeAllImagesPostScript(String filepath) throws IOException
